@@ -30,14 +30,12 @@ document.getElementById('keyInput').addEventListener('keydown', function(event) 
 // Task 2: Numbers Only Input (using event object)
 document.getElementById('numberInput').addEventListener('keypress', function(event) {
     var keyCode = event.keyCode || event.which;
-    var keyChar = String.fromCharCode(keyCode);
     
-    // Allow numbers (0-9), decimal point, and control keys
+
     if (keyCode < 48 || keyCode > 57) {
-        // Allow decimal point (46), backspace (8), delete (46), tab (9), escape (27), enter (13)
         if (keyCode !== 46 && keyCode !== 8 && keyCode !== 9 && keyCode !== 27 && keyCode !== 13) {
             event.preventDefault();
-            document.getElementById('numberInfo').innerHTML = "Only numbers are allowed! You tried to enter: '" + keyChar + "' (ASCII: " + keyCode + ")";
+            document.getElementById('numberInfo').innerHTML = "Only numbers are allowed!";
             return false;
         }
     }
@@ -59,6 +57,8 @@ document.getElementById('numberInput').addEventListener('paste', function(event)
     }
 });
 
+
+
 // Task 3: Password Input with Eye Toggle
 var isPasswordVisible = false;
 
@@ -67,12 +67,12 @@ document.getElementById('eyeIcon').addEventListener('click', function() {
     var eyeIcon = document.getElementById('eyeIcon');
     
     if (isPasswordVisible) {
-        // Hide password
+
         passwordInput.type = 'password';
-        eyeIcon.innerHTML = '👁️'; // Open eye
+        eyeIcon.innerHTML = '👁️'; 
         isPasswordVisible = false;
     } else {
-        // Show password
+
         passwordInput.type = 'text';
         eyeIcon.innerHTML = '🙈'; // Closed eye / see-no-evil monkey
         isPasswordVisible = true;
@@ -87,4 +87,3 @@ document.getElementById('eyeIcon').addEventListener('mouseenter', function() {
 document.getElementById('eyeIcon').addEventListener('mouseleave', function() {
     this.style.color = '#666';
 });
-
